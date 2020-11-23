@@ -49,15 +49,13 @@ def main():
 
 #helper functions
 def rename_files(image_dir):
-  with tqdm(total = len(os.listdir(image_dir)) as pbar:
-    for root, dirs, filenames in os.walk(image_dir):
-      for dir in dirs:
-        for f in os.listdir(os.path.join(image_dir, dir)):
-          if (f.split('.')[1] == 'jpg'):
-            from_rn = os.path.join(image_dir,dir,f)
-            to_rn = os.path.join(image_dir,dir)+'/' + dir+'_'+f
-            os.rename(from_rn, to_rn)
-      pbar.update(1)
+  for root, dirs, filenames in os.walk(image_dir):
+    for dir in dirs:
+      for f in os.listdir(os.path.join(image_dir, dir)):
+        if (f.split('.')[1] == 'jpg'):
+          from_rn = os.path.join(image_dir,dir,f)
+          to_rn = os.path.join(image_dir,dir)+'/' + dir+'_'+f
+          os.rename(from_rn, to_rn)
   print("Renaming process is done!")
 
 def list_to_str(list):
@@ -241,6 +239,3 @@ def split_data(txt_files_path, train_size, val_size, test_size):
 
 if __name__ == "__main__":
   main()
-
-from google.colab import drive
-drive.mount('/content/drive')
