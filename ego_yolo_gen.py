@@ -22,7 +22,7 @@ def main():
   val_size = args['val']
   test_size = args['test']
 
-  if extract == True:
+  if extract == "True":
     if os.path.exists("egohands"):
       print("Found egohands folder. Deleting...")
       shutil.rmtree("egohands")
